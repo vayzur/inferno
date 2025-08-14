@@ -1,0 +1,33 @@
+version: 2
+
+builds:
+  -
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    env:
+      - CGO_ENABLED=0
+    main: cmd/inferno/main.go
+    ldflags:
+      - -s -w -X main.version={{.Version}}
+
+archives:
+  -
+    formats: ["zip"]
+    name_template: "{{ .ProjectName }}-{{ .Os }}-{{ .Arch }}"
+
+checksum:
+  name_template: "{{ .ProjectName }}-{{ .Os }}-{{ .Arch }}-checksum.txt"
+  split: true
+
+changelog:
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - 'Merge pull request'
+      - 'Merge branch'
