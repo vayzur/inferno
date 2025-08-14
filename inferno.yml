@@ -1,0 +1,16 @@
+address: 0.0.0.0
+port: 10200
+prefork: true
+token: "inferno-shared-token"
+
+tls:
+  enabled: false
+  certFile: "/etc/inferno/certs/cert.pem"
+  keyFile: "/etc/inferno/certs/key.pem"
+
+etcd:
+  - "127.0.0.1:2379"
+
+nodeMonitorPeriod: 5s
+nodeMonitorGracePeriod: 20s
+inboundMonitorPeriod: 30m
